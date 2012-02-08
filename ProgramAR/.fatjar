@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Mon Sep 19 22:49:15 BRT 2011
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=ProgramAR - Linux.jar
+manifest.mergeall=true
+manifest.mainclass=Algebra.Cliente.ui.LocalPath
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=
+includes=
