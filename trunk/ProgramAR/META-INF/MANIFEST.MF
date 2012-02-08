@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Class-Path: .
+Main-Class: Algebra.Cliente.ui.LocalPath
+
+Name: common
+Implementation-Vendor: Sun Microsystems Inc.
+Implementation-Title: MySQL Connector/J
+Implementation-Version: 5.1.9
+Implementation-Vendor-Id: com.mysql
+Specification-Vendor: Sun Microsystems Inc.
+Specification-Title: JDBC
+Specification-Version: 4.0
+
