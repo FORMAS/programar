@@ -4,6 +4,7 @@ import java.io.*;
 
 public class RegistroArquivo implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
 	private String servidor;
     private String usuario;
     private String senha;
