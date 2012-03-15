@@ -4,8 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.sql.*;
 import java.util.Vector;
 import javax.swing.*;
@@ -43,7 +41,7 @@ public class Tela_Principal extends JFrame{
     private JTextField JTextFieldSchema;
     private JButton jButtonConexaoOK;
     private JButton jButtonConexaoCancel;
-    private JComboBox jComboBoxBanco;
+    private JComboBox<String> jComboBoxBanco;
     private JPanel jPanelAlgebraRelacional;
     private JRadioButton jRadioButtonAlgebraRelacional;
     private JScrollPane jScrollPaneAlgebraRelacional;
@@ -104,8 +102,8 @@ public class Tela_Principal extends JFrame{
     };
     
     
-    public Tela_Principal()
-    {
+    public Tela_Principal(){
+    	
         jContentPaneConsulta = null;
         jContentPaneConexao = null;
         jJMenuBarPrincipal = null;
@@ -179,64 +177,39 @@ public class Tela_Principal extends JFrame{
     }
     
     private void initialize(){
-//    	try{
-//    		UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");	
-//    	}catch (UnsupportedLookAndFeelException e) {
-//    	       // handle exception
-//        }catch (ClassNotFoundException e) {
-//           // handle exception
-//        }catch (InstantiationException e) {
-//           // handle exception
-//        }catch (IllegalAccessException e) {
-//           // handle exception
-//        }
+    	setResizable(false);
+        setJMenuBar(getJJMenuBarPrincipal());
+        setContentPane(getJContentPaneConsulta());
+        setTitle("ProgramAR - Programa de ensino da Algera Relacional");
+        setVisible(true);
     	    	
-        if(tela_consulta)
-        {
+        if(tela_consulta){
             jContentPaneConexao = null;
             setSize(810, 800);
             setPreferredSize(new Dimension(3429, 700));
-            setResizable(false);
-            setJMenuBar(getJJMenuBarPrincipal());
-            setContentPane(getJContentPaneConsulta());
-            setTitle("ProgramAR - Programa de ensino da Algera Relacional");
-            setVisible(true);
             EnableAlgebra(false);
             EnableCalculo(false);
             EnableSQL(false);
-        } else
-        {
+        } else{
             jContentPaneConsulta = null;
             setSize(810, 720);
             setPreferredSize(new Dimension(3700, 700));
-            setResizable(false);
-            setJMenuBar(getJJMenuBarPrincipal());
-            setContentPane(getJContentPaneConexao());
-            setTitle("ProgramAR - Programa de ensino da Algera Relacional");
-            setVisible(true);
         }
     }
 
     
     
-    public class Botao_Handler
-        implements ActionListener
-    {
+    public class Botao_Handler implements ActionListener{
 
-        public void actionPerformed(ActionEvent event)
-        {
+        public void actionPerformed(ActionEvent event){
             SimpleAttributeSet set = new SimpleAttributeSet();
             StyledDocument doc = getJTextPaneAlgebraRelacional().getStyledDocument();
-            String separador;
-            if (System.getProperty("os.name").startsWith("Windows")){
-         	   separador = "\\";
-            }else{
-         	   separador = "/";
-            }
+            
             StyleConstants.setFontFamily(set, "Algebra");
-            //StyleConstants.setFontFamily(set, "fonte" + separador + "Algebra.ttf");
+
             StyleConstants.setFontSize(set, 15);
             StyleConstants.setForeground(set, Color.BLUE);
+            
             if(event.getSource() == getJButtonSelecao())
                 try
                 {
@@ -248,6 +221,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonProjecao())
                 try
                 {
@@ -259,6 +233,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonUniao())
                 try
                 {
@@ -270,6 +245,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonIntersecao())
                 try
                 {
@@ -281,6 +257,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonDiferenca())
                 try
                 {
@@ -292,6 +269,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonProdutoCartesiano())
                 try
                 {
@@ -303,6 +281,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonJoinNatural())
                 try
                 {
@@ -314,6 +293,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonRecursao())
                 try
                 {
@@ -325,6 +305,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonOuterJoinTotal())
                 try
                 {
@@ -336,6 +317,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonOuterJoinEsquerda())
                 try
                 {
@@ -347,6 +329,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonOuterJoinDireita())
                 try
                 {
@@ -358,6 +341,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonRenomear())
                 try
                 {
@@ -369,6 +353,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonDivisao())
                 try
                 {
@@ -380,6 +365,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonJoin())
                 try
                 {
@@ -391,6 +377,7 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonAgregacao())
                 try
                 {
@@ -402,11 +389,13 @@ public class Tela_Principal extends JFrame{
                 {
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Erro na inser\347\343o do operador.", "Erro", 0);
                 }
+            
             if(event.getSource() == getJButtonAlgebraLimpar())
             {
                 getJTextPaneAlgebraRelacional().setText("");
                 getJTextPaneAlgebraRelacional().requestFocus();
             }
+            
             if(event.getSource() == getJButtonAlgebraExecutar())
                 if(jComboBoxBanco.getSelectedIndex() != -1)
                 {
@@ -425,32 +414,40 @@ public class Tela_Principal extends JFrame{
                     JOptionPane.showMessageDialog(getJContentPaneConsulta(), "Schema n\343o selecionado.", "Erro", 0);
                     return;
                 }
+            
             if(event.getSource() == getJButtonCalculoLimpar())
             {
                 getJTextAreaCalculoRelacional().setText("");
                 getJTextAreaCalculoRelacional().requestFocus();
             }
+            
             if(event.getSource() != getJButtonCalculoExecutar());
+            
             if(event.getSource() == getJButtonSQLLimpar())
             {
                 limpaResultado();
                 getJTextAreaSQL().setText("");
                 getJTextAreaSQL().requestFocus();
             }
+            
             if(event.getSource() == getJButtonSQLExecutar())
                 executaSQL();
+            
             if(event.getSource() == getJMenuItemConexaoBanco())
             {
                 tela_consulta = false;
                 initialize();
             }
+            
             if(event.getSource() == getJMenuItemConsultaBanco())
             {
                 tela_consulta = true;
                 initialize();
             }
+            
             if(event.getSource() == getJButtonConexaoOK())
                 verificaconexao();
+            
             if(event.getSource() == getJButtonConexaoCancel())
             {
                 tela_consulta = true;
@@ -476,8 +473,10 @@ public class Tela_Principal extends JFrame{
                 EnableSQL(false);
                 getJTextPaneAlgebraRelacional().requestFocus();
             }
+            
             event.getSource();
             getJRadioButtonCalculoRelacional();
+            
             if(event.getSource() == getJRadioButtonSQL())
             {
                 EnableAlgebra(false);
@@ -672,10 +671,10 @@ public class Tela_Principal extends JFrame{
         return jPanelConexaoFields;
     }
 
-    private JComboBox getJComboBoxBanco()
+    private JComboBox<String> getJComboBoxBanco()
     {
         if(jComboBoxBanco == null)
-            jComboBoxBanco = new JComboBox();
+            jComboBoxBanco = new JComboBox<String>();
         ListaBancos = criaconexao.getschemas();
         for(int i = 0; i < ListaBancos.length; i++)
             if(ListaBancos[i] != null)
@@ -744,7 +743,6 @@ public class Tela_Principal extends JFrame{
         if(jTextPaneAlgebraRelacional == null)
         {
             jTextPaneAlgebraRelacional = new JTextPane();
-            //jTextPaneAlgebraRelacional.setFont(new Font("Algebra", 0, 15));
             jTextPaneAlgebraRelacional.setFont(getFont(15));
             jTextPaneAlgebraRelacional.addKeyListener(new KeyAdapter() {
 
@@ -892,7 +890,6 @@ public class Tela_Principal extends JFrame{
         {
             jButtonSelecao = new JButton();
             jButtonSelecao.setPreferredSize(new Dimension(50, 30));
-            //jButtonSelecao.setFont(new Font("Dialog", 0, 19));
             jButtonSelecao.setFont(getFont(19));
             jButtonSelecao.setToolTipText("Sele\347\343o");
             jButtonSelecao.setText((new Character('\u038E')).toString());
@@ -906,7 +903,6 @@ public class Tela_Principal extends JFrame{
         {
             jButtonProjecao = new JButton();
             jButtonProjecao.setPreferredSize(new Dimension(50, 30));
-            //jButtonProjecao.setFont(new Font("Algebra", 0, 13));
             jButtonProjecao.setFont(getFont(13));
             jButtonProjecao.setToolTipText("Proje\347\343o");
             jButtonProjecao.setText((new Character('\u038F')).toString());
@@ -921,7 +917,6 @@ public class Tela_Principal extends JFrame{
             jButtonRenomear = new JButton();
             jButtonRenomear.setPreferredSize(new Dimension(50, 30));
             jButtonRenomear.setToolTipText("Renomear");
-            //jButtonRenomear.setFont(new Font("Algebra", 0, 17));
             jButtonRenomear.setFont(getFont(17));
             jButtonRenomear.setText((new Character('\u0398')).toString());
         }
@@ -934,7 +929,6 @@ public class Tela_Principal extends JFrame{
         {
             jButtonUniao = new JButton();
             jButtonUniao.setPreferredSize(new Dimension(50, 30));
-            //jButtonUniao.setFont(new Font("Algebra", 1, 13));
             jButtonUniao.setFont(getFont(13));
             jButtonUniao.setToolTipText("Uni\343o");
             jButtonUniao.setText((new Character('\u0390')).toString());
@@ -948,7 +942,6 @@ public class Tela_Principal extends JFrame{
         {
             jButtonIntersecao = new JButton();
             jButtonIntersecao.setPreferredSize(new Dimension(50, 30));
-            //jButtonIntersecao.setFont(new Font("Algebra", 1, 14));
             jButtonIntersecao.setFont(getFont(14));
             jButtonIntersecao.setToolTipText("Interse\347\343o");
             jButtonIntersecao.setText((new Character('\u0391')).toString());
@@ -962,7 +955,6 @@ public class Tela_Principal extends JFrame{
         if(jButtonDiferenca == null)
         {
             jButtonDiferenca = new JButton();
-            //jButtonDiferenca.setFont(new Font("Algebra", 1, 15));
             jButtonDiferenca.setFont(getFont(15));
             jButtonDiferenca.setToolTipText("Diferen\347a");
             jButtonDiferenca.setPreferredSize(new Dimension(50, 30));
@@ -978,7 +970,6 @@ public class Tela_Principal extends JFrame{
         {
             jButtonProdutoCartesiano = new JButton();
             jButtonProdutoCartesiano.setPreferredSize(new Dimension(50, 30));
-            //jButtonProdutoCartesiano.setFont(new Font("Algebra", 1, 13));
             jButtonProdutoCartesiano.setFont(getFont(13));
             jButtonProdutoCartesiano.setToolTipText("Produto Cartesiano");
             jButtonProdutoCartesiano.setText((new Character('\u0393')).toString());
@@ -993,7 +984,6 @@ public class Tela_Principal extends JFrame{
             jButtonJoinNatural = new JButton();
             jButtonJoinNatural.setPreferredSize(new Dimension(50, 30));
             jButtonJoinNatural.setToolTipText("Join Natural");
-            //jButtonJoinNatural.setFont(new Font("Algebra", 0, 15));
             jButtonJoinNatural.setFont(getFont(15));
             jButtonJoinNatural.setText((new Character('\u039B')).toString());
         }
@@ -1007,7 +997,6 @@ public class Tela_Principal extends JFrame{
             jButtonJoin = new JButton();
             jButtonJoin.setPreferredSize(new Dimension(50, 30));
             jButtonJoin.setToolTipText("Join");
-            //jButtonJoin.setFont(new Font("Algebra", 0, 15));
             jButtonJoin.setFont(getFont(15));
             jButtonJoin.setText((new Character('\u0394')).toString());
         }
@@ -1021,7 +1010,6 @@ public class Tela_Principal extends JFrame{
             jButtonAgregacao = new JButton();
             jButtonAgregacao.setPreferredSize(new Dimension(50, 30));
             jButtonAgregacao.setToolTipText("Agrega\347\343o");
-            //jButtonAgregacao.setFont(new Font("Algebra", 0, 15));
             jButtonAgregacao.setFont(getFont(15));
             jButtonAgregacao.setText((new Character('\u039A')).toString());
         }
@@ -1035,7 +1023,6 @@ public class Tela_Principal extends JFrame{
             jButtonRecursao = new JButton();
             jButtonRecursao.setPreferredSize(new Dimension(50, 30));
             jButtonRecursao.setToolTipText("Recurs\343o");
-            //jButtonRecursao.setFont(new Font("Algebra", 0, 15));
             jButtonRecursao.setFont(getFont(15));
             jButtonRecursao.setText((new Character('\u03B1')).toString());
         }
@@ -1049,7 +1036,6 @@ public class Tela_Principal extends JFrame{
             jButtonOuterJoinTotal = new JButton();
             jButtonOuterJoinTotal.setPreferredSize(new Dimension(50, 30));
             jButtonOuterJoinTotal.setToolTipText("Outer Join Total");
-            //jButtonOuterJoinTotal.setFont(new Font("Algebra", 0, 11));
             jButtonOuterJoinTotal.setFont(getFont(11));
             jButtonOuterJoinTotal.setText((new Character('\u0395')).toString());
         }
@@ -1063,7 +1049,6 @@ public class Tela_Principal extends JFrame{
             jButtonOuterJoinEsquerda = new JButton();
             jButtonOuterJoinEsquerda.setPreferredSize(new Dimension(50, 30));
             jButtonOuterJoinEsquerda.setToolTipText("Outer Join a Esquerda");
-            //jButtonOuterJoinEsquerda.setFont(new Font("Algebra", 0, 11));
             jButtonOuterJoinEsquerda.setFont(getFont(11));
             jButtonOuterJoinEsquerda.setText((new Character('\u0396')).toString());
         }
@@ -1076,7 +1061,6 @@ public class Tela_Principal extends JFrame{
         {
             jButtonOuterJoinDireita = new JButton();
             jButtonOuterJoinDireita.setPreferredSize(new Dimension(50, 30));
-            //jButtonOuterJoinDireita.setFont(new Font("Algebra", 0, 11));
             jButtonOuterJoinDireita.setFont(getFont(11));
             jButtonOuterJoinDireita.setToolTipText("Outer Join a Direita");
             jButtonOuterJoinDireita.setText((new Character('\u0397')).toString());
@@ -1090,7 +1074,6 @@ public class Tela_Principal extends JFrame{
         {
             jButtonDivisao = new JButton();
             jButtonDivisao.setToolTipText("Divis\343o");
-            //jButtonDivisao.setFont(new Font("Algebra", 0, 19));
             jButtonDivisao.setFont(getFont(19));
             jButtonDivisao.setPreferredSize(new Dimension(50, 30));
             jButtonDivisao.setText((new Character('\u0399')).toString());
@@ -1101,17 +1084,7 @@ public class Tela_Principal extends JFrame{
     
     public Font getFont(int tamanho){  
         Font font = null;
-        String separador;
         try{  
-           //File file = new File( "C:\\Users\\Edlane\\ProgramAR\\ProgramAR-Win7\\ProgramAR\\Algebra.ttf" );
-//           if (System.getProperty("os.name").startsWith("Windows")){
-//        	   separador = "\\";
-//           }else{
-//        	   separador = "/";
-//           }
-//           File file = new File( "fonte" + separador + "Algebra.ttf" );
-//           FileInputStream fis = new FileInputStream( file );  
-//           font = Font.createFont( Font.TRUETYPE_FONT , fis );  
         	DataInputStream din = new DataInputStream(new BufferedInputStream(getClass().getResourceAsStream("Algebra.ttf")));
         	font = Font.createFont( Font.TRUETYPE_FONT , din );
         }catch( Exception e ){  
@@ -1598,8 +1571,8 @@ public class Tela_Principal extends JFrame{
 
     private void limpaResultado()
     {
-        Vector columnHeads = new Vector();
-        Vector rows = new Vector();
+        Vector<String> columnHeads = new Vector<String>();
+        Vector<Vector<String>> rows = new Vector<Vector<String>>();
         model.setDataVector(rows, columnHeads);
         model.fireTableDataChanged();
         getJScrollPaneResultado().setVisible(false);
@@ -1614,8 +1587,8 @@ public class Tela_Principal extends JFrame{
             JOptionPane.showMessageDialog(this, "Consulta n\343o retornou nenhuma tupla");
             return;
         }
-        Vector columnHeads = new Vector();
-        Vector rows = new Vector();
+        Vector<String> columnHeads = new Vector<String>();
+        Vector<Vector<String>> rows = new Vector<Vector<String>>();
         try
         {
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -1637,10 +1610,10 @@ public class Tela_Principal extends JFrame{
         }
     }
 
-    private Vector getNextRow(ResultSet rs, ResultSetMetaData rsmd)
+    private Vector<String> getNextRow(ResultSet rs, ResultSetMetaData rsmd)
         throws SQLException
     {
-        Vector currentRow = new Vector();
+        Vector<String> currentRow = new Vector<String>();
         for(int i = 1; i <= rsmd.getColumnCount(); i++)
         {
             String st = rs.getString(i);
@@ -1680,19 +1653,3 @@ public class Tela_Principal extends JFrame{
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

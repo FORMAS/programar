@@ -1,15 +1,18 @@
 package Algebra.Cliente;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.PrintStream;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
 public class ParametroAlgebraTexto
 {
+    String operador;
+    String normal;
+    String sobrescrito;
+    String erro;
+    String renomear_relacao;
+    String texto;
+    SimpleAttributeSet set;
 
     public ParametroAlgebraTexto()
     {
@@ -31,47 +34,36 @@ public class ParametroAlgebraTexto
 
     public void settipo(String id)
     {
-    	String separador;
-//        if (System.getProperty("os.name").startsWith("Windows")){
-//     	   separador = "\\";
-//        }else{
-//     	   separador = "/";
-//        }
         if(set == null)
             set = new SimpleAttributeSet();
+
         if(id.equals(operador))
         {
-            //StyleConstants.setFontFamily(set, "Algebra");
         	StyleConstants.setFontFamily(set, "Algebra");
             StyleConstants.setFontSize(set, 15);
-        	//StyleConstants.setFontFamily(set, getFont(15));
             StyleConstants.setForeground(set, Color.BLUE);
         } else
         if(id.equals(normal))
         {
             StyleConstants.setFontFamily(set, "Algebra");
-        	//StyleConstants.setFontFamily(set, "fonte" + separador + "Algebra.ttf");
             StyleConstants.setFontSize(set, 15);
             StyleConstants.setForeground(set, Color.BLACK);
         } else
         if(id.equals(sobrescrito))
         {
             StyleConstants.setFontFamily(set, "Algebra");
-        	//StyleConstants.setFontFamily(set, "fonte" + separador + "Algebra.ttf");
             StyleConstants.setFontSize(set, 10);
             StyleConstants.setForeground(set, Color.BLACK);
         } else
         if(id.equals(erro))
         {
             StyleConstants.setFontFamily(set, "Algebra");
-        	//StyleConstants.setFontFamily(set, "fonte" + separador + "Algebra.ttf");
             StyleConstants.setFontSize(set, 15);
             StyleConstants.setForeground(set, Color.RED);
         } else
         if(id.equals(renomear_relacao))
         {
             StyleConstants.setFontFamily(set, "Algebra");
-        	//StyleConstants.setFontFamily(set, "fonte" + separador + "Algebra.ttf");
             StyleConstants.setFontSize(set, 15);
             StyleConstants.setItalic(set, true);
             StyleConstants.setForeground(set, Color.BLACK);
@@ -81,25 +73,6 @@ public class ParametroAlgebraTexto
         }
     }
     
-//    public Font getFont(int tamanho){  
-//        Font font = null;
-//        String separador;
-//        try{  
-//           //File file = new File( "C:\\Users\\Edlane\\ProgramAR\\ProgramAR-Win7\\ProgramAR\\Algebra.ttf" );
-//           if (System.getProperty("os.name").startsWith("Windows")){
-//        	   separador = "\\";
-//           }else{
-//        	   separador = "/";
-//           }
-//           File file = new File( "fonte" + separador + "Algebra.ttf" );
-//           FileInputStream fis = new FileInputStream( file );  
-//           font = Font.createFont( Font.TRUETYPE_FONT , fis );  
-//        }catch( Exception e ){  
-//           System.out.println( e.getMessage() );  
-//        }  
-//        font = font.deriveFont( Font.PLAIN , tamanho );  
-//        return font;  
-//    }
 
     public String gettexto()
     {
@@ -111,12 +84,5 @@ public class ParametroAlgebraTexto
         return set;
     }
 
-    String operador;
-    String normal;
-    String sobrescrito;
-    String erro;
-    String renomear_relacao;
-    String texto;
-    SimpleAttributeSet set;
 }
 
