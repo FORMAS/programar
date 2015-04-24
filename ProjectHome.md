@@ -1,0 +1,1 @@
+Projeto de uma ferramenta para o aprendizado de Álgebra Relacional, Cálculo Relacional e SQL que permitirá a construção de um modelo Entidade Relacionamento seguindo a notação do livro do Navathe. Essa ferramenta deverá permitir a conversão entre os tipos de consulta, como Álgebra Relacional para SQL, Cálculo Relacional para SQL e também a conversão contrária.
