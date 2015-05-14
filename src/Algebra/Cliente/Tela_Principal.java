@@ -194,6 +194,8 @@ public class Tela_Principal extends JFrame{
             jContentPaneConsulta = null;
             setSize(810, 720);
             setPreferredSize(new Dimension(3700, 700));
+	    setContentPane(getJContentPaneConexao());
+            setVisible(true);
         }
     }
 
