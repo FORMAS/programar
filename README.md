@@ -1,6 +1,5 @@
 ## Uma ferramenta para o ensino da Álgebra Relacional
 
-
 O armazenamento dos dados é um componente essencial da vida na sociedade moderna. Diariamente, diversas atividades que envolvem alguma interação com um banco de dados ocorrem, tais como um depósito ou saque em uma agencia bancaria, uma reserva em um hotel ou compra de um bilhete de voo, acesso ao catálogo de uma biblioteca virtual ou ainda uma compra online. Essas interações são exemplos do que se pode chamar de aplicações de banco de dados [ELMASRI, NAVATHE, 2010].
 
 O desenvolvimento de um Banco de Dados requer estudos aprofundados na modelagem deste banco, mapeamento, consulta aos dados de um SGBD, a linguagem SQL (Structured Query Language) e o desenvolvimento de aplicações que fazem uso destes dados. [ELMASRI, 2011].
@@ -68,14 +67,14 @@ Execute o script ProgramAR-db.sql, um script com a configuração de um esquema 
 
 ## Download stable release
 
-* ProgramAR-Linux32.jar
-* ProgramAR-Linux64.jar (Versão lab. UFBA 154)
-* ProgramAR-Windows32.jar
-* ProgramAR-Windows64.jar
+* [ProgramAR-Linux32.jar](ProgramAR_-_Linux32.jar)
+* [ProgramAR-Windows32.jar](ProgramAR_-_Windows32.jar)
+* [ProgramAR-Linux64.jar (Versão lab. UFBA 154)](ProgramAR_-_Linux64.jar)
+* [ProgramAR-Windows64.jar](ProgramAR_-_Windows64.jar)
 
 #### Dump do Banco de Dados
 
-* ProgramAR-db.sql
+* [ProgramAR-db.sql](programAR-db.sql)
 
 ## Avaliação
 
