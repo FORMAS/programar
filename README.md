@@ -82,4 +82,4 @@ Pensando em melhorar a utilização da ferramenta elaboramos uma ficha de avalia
 
 ## Quero contribuir
 
-Entre em contato pelo site do [FORMAS](https://github.com/FORMAS/programar).
+Faça um Pull request ou Clone do repositório no [GitHub](https://github.com/FORMAS/programar).
