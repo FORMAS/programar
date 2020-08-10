@@ -83,3 +83,6 @@ Pensando em melhorar a utilização da ferramenta elaboramos uma ficha de avalia
 ## Quero contribuir
 
 Faça um Pull request ou Clone do repositório no [GitHub](https://github.com/FORMAS/programar).
+
+## Dúvidas
+[Por favor, use o Issue tracker do GitHub](https://github.com/FORMAS/programar/issues)
